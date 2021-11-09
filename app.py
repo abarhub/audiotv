@@ -1,9 +1,22 @@
 import os
 import subprocess
 
+from flask_cors import CORS
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+cors = CORS(app, resource={
+    r"/*":{
+        "origins":"*"
+    }
+})
+
+# @blueprint.after_request # blueprint can also be app~~
+# def after_request(response):
+#     header = response.headers
+#     header['Access-Control-Allow-Headers'] = 'Content-Type'
+#     header['Access-Control-Allow-Origin'] = '*'
+#     return response
 
 @app.route('/')
 def init():  # put application's code here
