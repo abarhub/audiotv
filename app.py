@@ -5,11 +5,12 @@ from flask_cors import CORS
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
-cors = CORS(app, resource={
-    r"/*":{
-        "origins":"*"
-    }
-})
+# cors = CORS(app, resource={
+#     r"/*":{
+#         "origins":"*"
+#     }
+# })
+CORS(app)
 
 # @blueprint.after_request # blueprint can also be app~~
 # def after_request(response):
