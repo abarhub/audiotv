@@ -60,7 +60,7 @@ function traitementMessage(message) {
     if (message) {
         if (contient(message, 'démarrage')) {
             TVOn();
-        } else if (contient(message, 'arrêt')) {
+        } else if (contient(message, 'arrêt')||contient(message, 'stop')) {
             TVOff();
         } else if (contient(message, 'bonjour')) {
             speak('Bonjour humain. Enchanté de faire votre connaissance')
