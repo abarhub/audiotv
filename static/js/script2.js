@@ -202,7 +202,17 @@ function TVOff() {
 
 function TVStatus() {
     fetch(serveur + "tv?action=status")
-        .then(response => messageStatus(response))
+        .then(response => {
+            let message = 'Erreur';
+            if (response.status == 201) {
+                message = 'TV démarré';
+            } else if (response.status == 202) {
+                message = 'TV arrété';
+            } else if (response.status == 203) {
+                message = 'Erreur pour récupérer l\'état de la TV';
+            }
+            messageStatus(message);
+        })
         .catch(error => erreur("Erreur : " + error));
 }
 
