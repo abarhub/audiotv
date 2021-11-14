@@ -22,6 +22,7 @@ recognition.maxAlternatives = 1;
 
 var diagnostic = document.querySelector('.diagnostic');
 var message = document.querySelector('.message');
+var status = document.querySelector('.status');
 
 // variables syntese vocale
 var synth = window.speechSynthesis;
@@ -171,9 +172,14 @@ function erreur(message) {
     diagnostic.textContent = message;
 }
 
-function messageinfo(message) {
+function messageinfo(message2) {
+    console.info(message2);
+    message.textContent = message2;
+}
+
+function messageStatus(message) {
     console.info(message);
-    message.testContent = message;
+    status.textContent = message;
 }
 
 function TVOn() {
@@ -194,5 +200,9 @@ function TVOff() {
         .catch(error => erreur("Erreur : " + error));
 }
 
-
+function TVStatus() {
+    fetch(serveur + "tv?action=status")
+        .then(response => messageStatus(response))
+        .catch(error => erreur("Erreur : " + error));
+}
 
