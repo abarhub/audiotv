@@ -178,7 +178,7 @@ function messageinfo(message2) {
 }
 
 function messageStatus(message) {
-    console.info(message);
+    console.info('status',message);
     status.textContent = message;
 }
 
@@ -204,11 +204,11 @@ function TVStatus() {
     fetch(serveur + "tv?action=status")
         .then(response => {
             let message = 'Erreur';
-            if (response.status == 201) {
+            if (response.status === 201) {
                 message = 'TV démarré';
-            } else if (response.status == 202) {
+            } else if (response.status === 202) {
                 message = 'TV arrété';
-            } else if (response.status == 203) {
+            } else if (response.status === 203) {
                 message = 'Erreur pour récupérer l\'état de la TV';
             }
             messageStatus(message);
